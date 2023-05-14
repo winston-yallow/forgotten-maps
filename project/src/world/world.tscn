@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dcxiwv3b23px7"]
+[gd_scene load_steps=22 format=3 uid="uid://dcxiwv3b23px7"]
 
 [ext_resource type="PackedScene" uid="uid://buiiq3pt2tk7" path="res://src/player/player.tscn" id="1_3dhbf"]
 [ext_resource type="PackedScene" uid="uid://bwbpd8plw257u" path="res://src/world/assets/rockFlat.glb" id="1_emh8c"]
@@ -25,6 +25,8 @@ albedo_color = Color(0.372549, 0.721569, 1, 1)
 size = Vector2(5000, 5000)
 subdivide_width = 50
 subdivide_depth = 50
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_sstgw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3oc5q"]
 albedo_color = Color(1, 0, 0.0588235, 1)
@@ -55,9 +57,14 @@ albedo_color = Color(1, 0.658824, 0, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rj4us")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.5, 0.701135, -0.50834, 3.07336e-08, 0.58698, 0.809601, 0.866025, -0.404801, 0.29349, 0, 0, 0)
 shadow_enabled = true
+directional_shadow_blend_splits = true
+
+[node name="Backlight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707107, 0.316326, 0.632406, 2.98023e-08, 0.894357, -0.447353, -0.707107, -0.316326, -0.632406, 0, 0, 0)
+light_energy = 0.25
 directional_shadow_blend_splits = true
 
 [node name="Player" parent="." instance=ExtResource("1_3dhbf")]
@@ -77,6 +84,11 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 material_override = SubResource("StandardMaterial3D_dv2gu")
 mesh = SubResource("PlaneMesh_vcuvs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Island Base/Water"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Island Base/Water/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_sstgw")
 
 [node name="rockFlat" parent="Island Base" instance=ExtResource("1_emh8c")]
 transform = Transform3D(650, 0, 0, 0, 1, 0, 0, 0, 650, 0, 0, 0)
