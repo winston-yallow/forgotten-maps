@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Forgotten Maps"
-run/main_scene="res://src/wip/demo.tscn"
+run/main_scene="res://src/world/world.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=3
 
 [input]
 
