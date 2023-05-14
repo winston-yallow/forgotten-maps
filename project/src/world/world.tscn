@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://dcxiwv3b23px7"]
+[gd_scene load_steps=21 format=3 uid="uid://dcxiwv3b23px7"]
 
+[ext_resource type="PackedScene" uid="uid://buiiq3pt2tk7" path="res://src/player/player.tscn" id="1_3dhbf"]
 [ext_resource type="PackedScene" uid="uid://bwbpd8plw257u" path="res://src/world/assets/rockFlat.glb" id="1_emh8c"]
 [ext_resource type="PackedScene" uid="uid://cdikuu3mffxbp" path="res://src/world/assets/rockFlatGrass.glb" id="2_bup4j"]
 [ext_resource type="PackedScene" uid="uid://d25sss2vqemr5" path="res://src/world/assets/tree_palmBend.glb" id="3_gcse5"]
@@ -57,10 +58,8 @@ environment = SubResource("Environment_rj4us")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.5, 0.701135, -0.50834, 3.07336e-08, 0.58698, 0.809601, 0.866025, -0.404801, 0.29349, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 172, 0)
-projection = 1
-size = 1000.0
+[node name="Player" parent="." instance=ExtResource("1_3dhbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, 0.0464362, 234)
 
 [node name="Map Overlay" type="Sprite3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 667.75, 24, -501.498)
@@ -156,7 +155,6 @@ transform = Transform3D(-75.4091, 0, -65.677, 0, 200, 0, 65.677, 0, -75.4091, -3
 transform = Transform3D(-31.7122, 0, 94.8385, 0, 200, 0, -94.8385, 0, -31.7122, -311.957, -23.1216, 168.948)
 
 [node name="North Beach" type="Node3D" parent="."]
-visible = false
 metadata/_edit_group_ = true
 
 [node name="tree_palmBend" parent="North Beach" instance=ExtResource("3_gcse5")]
