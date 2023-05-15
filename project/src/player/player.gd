@@ -6,6 +6,7 @@ const JUMP_VELOCITY = 15.0
 const GRAVITY = 30.0
 
 @onready var cam: Camera3D = %Camera
+@onready var map: DynamicMap = %DynamicMap
 
 
 func _ready() -> void:
@@ -13,14 +14,24 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and not map.active:
 		rotate_y(-event.relative.x * 0.005)
 		var new_cam_rotation: float = cam.rotation.x - event.relative.y * 0.005
 		var max_rotation := deg_to_rad(80)
 		cam.rotation.x = clamp(new_cam_rotation, -max_rotation, max_rotation)
+	
+	elif event.is_action_pressed("toggle_map"):
+		map.active = not map.active
+		if map.active:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _physics_process(delta: float) -> void:
+	if map.active:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta

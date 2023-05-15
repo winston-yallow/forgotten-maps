@@ -1,3 +1,4 @@
+class_name DynamicMap
 extends Node2D
 
 
@@ -5,11 +6,14 @@ extends Node2D
 @export var texture: Texture
 @export var size_factor: float = 1.0
 
+var active := false
 var placed_markers: Array[MapMarker] = []
 var builder: MeshBuilder
 
 
 func _input(event: InputEvent) -> void:
+	if not active:
+		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		_add_marker(event.position)
 
