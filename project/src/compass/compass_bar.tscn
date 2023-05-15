@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgefre3hfhcbq"]
+
+[ext_resource type="Script" path="res://src/compass/compass_bar.gd" id="1_dxj0t"]
+[ext_resource type="Shader" path="res://src/compass/compass_bar.gdshader" id="1_m06bl"]
+[ext_resource type="Texture2D" uid="uid://c6jf8hfufnvd1" path="res://src/compass/compass_bar.png" id="1_ue8kl"]
+
+[sub_resource type="Gradient" id="Gradient_h240o"]
+offsets = PackedFloat32Array(0.146341, 0.495935)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jiyeq"]
+gradient = SubResource("Gradient_h240o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7cp5"]
+shader = ExtResource("1_m06bl")
+shader_parameter/offset = 0.5
+shader_parameter/compass = ExtResource("1_ue8kl")
+shader_parameter/falloff = SubResource("GradientTexture1D_jiyeq")
+
+[node name="CompassBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dxj0t")
+
+[node name="Degrees" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_v7cp5")
+clip_contents = true
+custom_minimum_size = Vector2(1800, 73)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -900.0
+offset_right = 900.0
+offset_bottom = 73.0
+grow_horizontal = 2
+
+[node name="HeadingIndicator" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.0
+offset_right = 2.0
+offset_bottom = 4.0
+grow_horizontal = 2

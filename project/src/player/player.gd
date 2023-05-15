@@ -13,6 +13,7 @@ var current_state := STATE.EXPLORING
 
 @onready var cam: Camera3D = %Camera
 @onready var map: DynamicMap = %DynamicMap
+@onready var compass_bar: CompassBar = %CompassBar
 
 
 func _ready() -> void:
@@ -58,6 +59,10 @@ func _physics_process(delta: float) -> void:
 	
 	# Update player position debug value
 	map.player_pos_debug = _get_map_pos()
+	
+	# Update compass heading
+	var forward := Vector2(basis.z.x, basis.z.z)
+	compass_bar.heading = TAU - forward.angle_to(Vector2(0, -1))
 	
 	# Add the gravity.
 	if not is_on_floor():
