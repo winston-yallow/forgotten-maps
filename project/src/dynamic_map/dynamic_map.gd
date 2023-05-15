@@ -2,24 +2,16 @@ class_name DynamicMap
 extends Node2D
 
 
-@export var player: Node3D
 @export var texture: Texture
 @export var size_factor: float = 1.0
 
-var active := false
+var player_pos_debug := Vector2.ZERO
 var placed_markers: Array[MapMarker] = []
 var builder: MeshBuilder
 
 
-func _input(event: InputEvent) -> void:
-	if not active:
-		return
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		_add_marker(event.position)
-
-
-func _add_marker(canvas_pos: Vector2) -> void:
-	var marker := MapMarker.new(canvas_pos, _get_player_pos())
+func _add_marker(canvas_pos: Vector2, map_pos: Vector2) -> void:
+	var marker := MapMarker.new(canvas_pos, map_pos)
 	placed_markers.append(marker)
 	if placed_markers.size() >= 3:
 		builder = MeshBuilder.new(placed_markers, texture.get_size() * size_factor)
@@ -51,8 +43,4 @@ func _draw() -> void:
 		draw_line(marker.canvas_pos, marker.map_pos, Color.GREEN, 1.0)
 	
 	# Draw player position
-	draw_circle(_get_player_pos(), 10.0, Color.GOLD)
-
-
-func _get_player_pos() -> Vector2:
-	return Vector2(player.position.x, player.position.z)
+	draw_circle(player_pos_debug, 10.0, Color.GOLD)
