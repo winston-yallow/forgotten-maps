@@ -9,57 +9,45 @@ const GRAVITY = 30.0
 @export var map_offset := Vector2.ZERO
 @export var map_scale := 1.0
 
-enum STATE { EXPLORING, MAPPING }
-var current_state := STATE.EXPLORING
-
 @onready var cam: Camera3D = %Camera
 @onready var map: DynamicMap = %DynamicMap
 @onready var compass_bar: CompassBar = %CompassBar
 
 
 func _ready() -> void:
-	_change_state(STATE.EXPLORING)
+	_deactivate_map()
 
 
 func get_map_pos() -> Vector2:
 	return (Vector2(-position.x, -position.z) + map_offset) * map_scale
 
 
-func _change_state(to: STATE) -> void:
-	current_state = to
-	match current_state:
-		STATE.EXPLORING:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		STATE.MAPPING:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+func _activate_map() -> void:
+	map.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func _deactivate_map() -> void:
+	map.visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_map"):
-		_change_state(STATE.MAPPING if current_state == STATE.EXPLORING else STATE.EXPLORING)
+	if map.visible:
+		if event.is_action_pressed("toggle_map"):
+			_deactivate_map()
 	else:
-		match current_state:
-			STATE.EXPLORING:
-				_handle_player_input(event)
-			STATE.MAPPING:
-				_handle_map_input(event)
-
-
-func _handle_map_input(event: InputEvent) -> void:
-	if event.is_action_pressed("place_marker"):
-		map._add_marker(event.position)
-
-
-func _handle_player_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * 0.005)
-		var new_cam_rotation: float = cam.rotation.x - event.relative.y * 0.005
-		var max_rotation := deg_to_rad(80)
-		cam.rotation.x = clamp(new_cam_rotation, -max_rotation, max_rotation)
+		if event.is_action_pressed("toggle_map"):
+			_activate_map()
+		elif event is InputEventMouseMotion:
+			rotate_y(-event.relative.x * 0.005)
+			var new_cam_rotation: float = cam.rotation.x - event.relative.y * 0.005
+			var max_rotation := deg_to_rad(80)
+			cam.rotation.x = clamp(new_cam_rotation, -max_rotation, max_rotation)
 
 
 func _physics_process(delta: float) -> void:
-	if current_state != STATE.EXPLORING:
+	if map.visible:
 		return
 	
 	# Update compass heading

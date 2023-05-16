@@ -10,6 +10,14 @@ var placed_markers: Array[MapMarker] = []
 var builder: MeshBuilder
 
 
+func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+	
+	if event.is_action_pressed("place_marker"):
+		_add_marker(event.position)
+
+
 func _add_marker(canvas_pos: Vector2) -> void:
 	var marker := MapMarker.new(canvas_pos, player.get_map_pos())
 	placed_markers.append(marker)
