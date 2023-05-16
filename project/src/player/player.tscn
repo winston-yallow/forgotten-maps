@@ -22,10 +22,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+[node name="CompassBar" parent="HUD" instance=ExtResource("4_pqe6y")]
+unique_name_in_owner = true
+
 [node name="DynamicMap" parent="HUD" node_paths=PackedStringArray("player") instance=ExtResource("2_mogkq")]
 unique_name_in_owner = true
 texture = ExtResource("3_h51qy")
 player = NodePath("../..")
-
-[node name="CompassBar" parent="HUD" instance=ExtResource("4_pqe6y")]
-unique_name_in_owner = true
