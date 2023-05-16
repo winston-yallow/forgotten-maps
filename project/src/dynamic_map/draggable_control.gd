@@ -2,6 +2,8 @@ class_name DraggableControl
 extends Control
 
 
+var active := false
+
 var dragging := false
 var drag_object_start := Vector2.ZERO
 var drag_mouse_start := Vector2.ZERO
@@ -10,7 +12,20 @@ var rotating := false
 var rotation_anchor := Vector2(0, size.y)
 
 
+func activate() -> void:
+	active = true
+	dragging = false
+	rotating = false
+
+
+func deactivate() -> void:
+	active = false
+
+
 func _gui_input(event: InputEvent) -> void:
+	if not active:
+		return
+	
 	if not dragging:
 		_handle_waiting(event)
 	else:

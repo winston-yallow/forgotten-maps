@@ -1,11 +1,12 @@
 class_name DynamicMap
-extends Node2D
+extends Control
 
 
 @export var texture: Texture
 @export var size_factor: float = 1.0
 @export var player: Player
 
+var proposed_marker := Vector2.INF
 var placed_markers: Array[MapMarker] = []
 var builder: MeshBuilder
 
@@ -13,26 +14,60 @@ var builder: MeshBuilder
 	%Ruler1 as DraggableControl,
 	%Ruler2 as DraggableControl,
 ]
+@onready var marker_add: Button = %MarkerAdd
+@onready var click_detector: Control = %ClickDetector
+@onready var marker_confirm: Button = %MarkerConfirm
+@onready var marker_abort: Button = %MarkerAbort
 
 
 func activate() -> void:
 	visible = true
+	click_detector.visible = false
+	for ruler in rulers:
+		ruler.activate()
 
 
 func deactivate() -> void:
 	visible = false
+	click_detector.visible = false
+	_end_marker_mode()
+	for ruler in rulers:
+		ruler.deactivate()
 
 
 func is_active() -> bool:
 	return visible
 
 
-func _input(event: InputEvent) -> void:
-	if not visible:
-		return
-	
+func _ready() -> void:
+	marker_add.pressed.connect(_start_marker_mode)
+	marker_abort.pressed.connect(_end_marker_mode)
+	marker_confirm.pressed.connect(_confirm_marker)
+	click_detector.gui_input.connect(_detector_input)
+
+
+func _detector_input(event: InputEvent) -> void:
 	if event.is_action_pressed("map_interaction"):
-		_add_marker(get_local_mouse_position())
+		proposed_marker = get_local_mouse_position()
+		marker_confirm.disabled = false
+
+
+func _start_marker_mode() -> void:
+	proposed_marker = Vector2.INF
+	marker_confirm.disabled = true
+	click_detector.visible = true
+	marker_add.visible = false
+
+
+func _end_marker_mode() -> void:
+	proposed_marker = Vector2.INF
+	click_detector.visible = false
+	marker_add.visible = true
+
+
+func _confirm_marker() -> void:
+	_add_marker(proposed_marker)
+	_end_marker_mode()
 
 
 func _add_marker(canvas_pos: Vector2) -> void:
@@ -63,6 +98,8 @@ func _draw() -> void:
 			draw_polygon(tri, polygon_colors)
 	
 	# Draw markers
+	if proposed_marker != Vector2.INF:
+		draw_circle(proposed_marker, 8.0, Color.YELLOW_GREEN)
 	for marker in placed_markers:
 		draw_circle(marker.canvas_pos, 6.0, Color.GREEN)
 		draw_line(marker.canvas_pos, marker.map_pos, Color.GREEN, 1.0)
