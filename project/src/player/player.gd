@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 
@@ -18,6 +19,10 @@ var current_state := STATE.EXPLORING
 
 func _ready() -> void:
 	_change_state(STATE.EXPLORING)
+
+
+func get_map_pos() -> Vector2:
+	return (Vector2(-position.x, -position.z) + map_offset) * map_scale
 
 
 func _change_state(to: STATE) -> void:
@@ -42,7 +47,7 @@ func _input(event: InputEvent) -> void:
 
 func _handle_map_input(event: InputEvent) -> void:
 	if event.is_action_pressed("place_marker"):
-		map._add_marker(event.position, _get_map_pos())
+		map._add_marker(event.position)
 
 
 func _handle_player_input(event: InputEvent) -> void:
@@ -56,9 +61,6 @@ func _handle_player_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if current_state != STATE.EXPLORING:
 		return
-	
-	# Update player position debug value
-	map.player_pos_debug = _get_map_pos()
 	
 	# Update compass heading
 	var forward := Vector2(basis.z.x, basis.z.z)
@@ -83,7 +85,3 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	move_and_slide()
-
-
-func _get_map_pos() -> Vector2:
-	return (Vector2(-position.x, -position.z) + map_offset) * map_scale

@@ -4,14 +4,14 @@ extends Node2D
 
 @export var texture: Texture
 @export var size_factor: float = 1.0
+@export var player: Player
 
-var player_pos_debug := Vector2.ZERO
 var placed_markers: Array[MapMarker] = []
 var builder: MeshBuilder
 
 
-func _add_marker(canvas_pos: Vector2, map_pos: Vector2) -> void:
-	var marker := MapMarker.new(canvas_pos, map_pos)
+func _add_marker(canvas_pos: Vector2) -> void:
+	var marker := MapMarker.new(canvas_pos, player.get_map_pos())
 	placed_markers.append(marker)
 	if placed_markers.size() >= 3:
 		builder = MeshBuilder.new(placed_markers, texture.get_size() * size_factor)
@@ -43,4 +43,4 @@ func _draw() -> void:
 		draw_line(marker.canvas_pos, marker.map_pos, Color.GREEN, 1.0)
 	
 	# Draw player position
-	draw_circle(player_pos_debug, 10.0, Color.GOLD)
+	draw_circle(player.get_map_pos(), 10.0, Color.GOLD)
