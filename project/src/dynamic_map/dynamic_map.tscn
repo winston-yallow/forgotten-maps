@@ -1,17 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://drxv03gxcm087"]
+[gd_scene load_steps=4 format=3 uid="uid://drxv03gxcm087"]
 
 [ext_resource type="Script" path="res://src/dynamic_map/dynamic_map.gd" id="1_bmimc"]
 [ext_resource type="Texture2D" uid="uid://gxfrsmjcei2a" path="res://src/dynamic_map/ruler.png" id="2_r850h"]
+[ext_resource type="Script" path="res://src/dynamic_map/draggable_control.gd" id="3_d6bf6"]
 
 [node name="Dynamic Map" type="Node2D"]
 script = ExtResource("1_bmimc")
 
-[node name="Ruler1" type="Sprite2D" parent="."]
+[node name="Ruler1" type="TextureRect" parent="."]
 unique_name_in_owner = true
-position = Vector2(360, 40)
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 720.0
+offset_bottom = 75.0
 texture = ExtResource("2_r850h")
+script = ExtResource("3_d6bf6")
 
-[node name="Ruler2" type="Sprite2D" parent="."]
+[node name="Ruler2" type="TextureRect" parent="."]
 unique_name_in_owner = true
-position = Vector2(360, 110)
+offset_left = 20.0
+offset_top = 95.0
+offset_right = 720.0
+offset_bottom = 150.0
 texture = ExtResource("2_r850h")
+script = ExtResource("3_d6bf6")

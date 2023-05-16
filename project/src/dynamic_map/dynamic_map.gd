@@ -9,7 +9,10 @@ extends Node2D
 var placed_markers: Array[MapMarker] = []
 var builder: MeshBuilder
 
-@onready var rulers: Array[Sprite2D] = [%Ruler1 as Sprite2D, %Ruler2 as Sprite2D]
+@onready var rulers: Array[DraggableControl] = [
+	%Ruler1 as DraggableControl,
+	%Ruler2 as DraggableControl,
+]
 
 
 func activate() -> void:
