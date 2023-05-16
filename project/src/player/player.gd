@@ -23,17 +23,17 @@ func get_map_pos() -> Vector2:
 
 
 func _activate_map() -> void:
-	map.visible = true
+	map.activate()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func _deactivate_map() -> void:
-	map.visible = false
+	map.deactivate()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _input(event: InputEvent) -> void:
-	if map.visible:
+	if map.is_active():
 		if event.is_action_pressed("toggle_map"):
 			_deactivate_map()
 	else:
@@ -47,7 +47,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if map.visible:
+	if map.is_active():
 		return
 	
 	# Update compass heading

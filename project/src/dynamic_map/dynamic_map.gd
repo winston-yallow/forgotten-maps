@@ -10,12 +10,24 @@ var placed_markers: Array[MapMarker] = []
 var builder: MeshBuilder
 
 
+func activate() -> void:
+	visible = true
+
+
+func deactivate() -> void:
+	visible = false
+
+
+func is_active() -> bool:
+	return visible
+
+
 func _input(event: InputEvent) -> void:
 	if not visible:
 		return
 	
-	if event.is_action_pressed("place_marker"):
-		_add_marker(event.position)
+	if event.is_action_pressed("map_interaction"):
+		_add_marker(get_local_mouse_position())
 
 
 func _add_marker(canvas_pos: Vector2) -> void:
