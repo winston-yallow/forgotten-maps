@@ -2,12 +2,7 @@ class_name MeshBuilder
 extends RefCounted
 
 
-var triangle_points: Array[PackedVector2Array] = []
-var triangle_offsets: Array[PackedVector2Array] = []
-var mesh: ArrayMesh
-
-
-func _init(markers: Array[MapMarker], img_size: Vector2) -> void:
+static func from_markers(markers: Array[MapMarker], img_size: Vector2) -> ArrayMesh:
 	# Generate list of raw points and offsets
 	var points := PackedVector2Array()
 	var offsets := PackedVector2Array()
@@ -33,6 +28,8 @@ func _init(markers: Array[MapMarker], img_size: Vector2) -> void:
 	
 	# Triangulate the pointcloud
 	var triangle_indices := Geometry2D.triangulate_delaunay(points)
+	var triangle_points: Array[PackedVector2Array] = []
+	var triangle_offsets: Array[PackedVector2Array] = []
 	for indices_idx in range(0, triangle_indices.size(), 3):
 		var idx_a := triangle_indices[indices_idx]
 		var idx_b := triangle_indices[indices_idx + 1]
@@ -55,4 +52,4 @@ func _init(markers: Array[MapMarker], img_size: Vector2) -> void:
 			var uv := texture_pos / img_size
 			st.set_uv(uv)
 			st.add_vertex(Vector3(point.x, point.y, 0.0))
-	mesh = st.commit()
+	return st.commit()

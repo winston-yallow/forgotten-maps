@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://drxv03gxcm087"]
+[gd_scene load_steps=6 format=3 uid="uid://drxv03gxcm087"]
 
 [ext_resource type="Script" path="res://src/dynamic_map/dynamic_map.gd" id="1_bmimc"]
 [ext_resource type="Texture2D" uid="uid://gxfrsmjcei2a" path="res://src/dynamic_map/ruler.png" id="2_r850h"]
 [ext_resource type="Script" path="res://src/dynamic_map/draggable_control.gd" id="3_d6bf6"]
+
+[sub_resource type="Gradient" id="Gradient_gyq7g"]
+offsets = PackedFloat32Array(0.774194, 0.922581)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rl3rs"]
+gradient = SubResource("Gradient_gyq7g")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Dynamic Map" type="Control"]
 layout_mode = 3
@@ -22,6 +34,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.443137, 0.411765, 0.329412, 1)
+
+[node name="MeshInstance" type="MeshInstance2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Ruler1" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -68,6 +83,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarkerPreview" type="Sprite2D" parent="ClickDetector"]
+unique_name_in_owner = true
+texture = SubResource("GradientTexture2D_rl3rs")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ClickDetector"]
 layout_mode = 1
