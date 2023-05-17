@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://drxv03gxcm087"]
+[gd_scene load_steps=7 format=3 uid="uid://drxv03gxcm087"]
 
 [ext_resource type="Script" path="res://src/dynamic_map/dynamic_map.gd" id="1_bmimc"]
 [ext_resource type="Texture2D" uid="uid://gxfrsmjcei2a" path="res://src/dynamic_map/ruler.png" id="2_r850h"]
 [ext_resource type="Script" path="res://src/dynamic_map/draggable_control.gd" id="3_d6bf6"]
+[ext_resource type="Texture2D" uid="uid://cmhmlefrwhxms" path="res://src/dynamic_map/compass.png" id="4_61sln"]
 
 [sub_resource type="Gradient" id="Gradient_gyq7g"]
 offsets = PackedFloat32Array(0.774194, 0.922581)
@@ -37,6 +38,21 @@ color = Color(0.443137, 0.411765, 0.329412, 1)
 
 [node name="MeshInstance" type="MeshInstance2D" parent="."]
 unique_name_in_owner = true
+
+[node name="Compass" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -270.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_61sln")
 
 [node name="Ruler1" type="TextureRect" parent="."]
 unique_name_in_owner = true
