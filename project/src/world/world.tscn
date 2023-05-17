@@ -69,6 +69,7 @@ directional_shadow_blend_splits = true
 
 [node name="Player" parent="." instance=ExtResource("1_3dhbf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, 0.0464362, 234)
+map_texture = ExtResource("6_sgv74")
 map_offset = Vector2(667.75, 501.498)
 map_scale = 1.073
 

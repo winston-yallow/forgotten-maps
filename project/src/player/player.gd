@@ -6,6 +6,8 @@ const SPEED = 30.0
 const JUMP_VELOCITY = 15.0
 const GRAVITY = 30.0
 
+@export var map_texture: Texture
+@export var map_display_factor := 1.0
 @export var map_offset := Vector2.ZERO
 @export var map_scale := 1.0
 
@@ -15,6 +17,8 @@ const GRAVITY = 30.0
 
 
 func _ready() -> void:
+	map.texture = map_texture
+	map.size_factor = map_display_factor
 	_deactivate_map()
 
 
