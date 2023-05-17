@@ -8,8 +8,8 @@ const GRAVITY = 30.0
 
 @export var map_texture: Texture
 @export var map_display_factor := 1.0
-@export var map_offset := Vector2.ZERO
-@export var map_scale := 1.0
+@export var map_world_offset := Vector2.ZERO
+@export var map_world_scale := 1.0
 
 @onready var cam: Camera3D = %Camera
 @onready var map: DynamicMap = %DynamicMap
@@ -23,7 +23,7 @@ func _ready() -> void:
 
 
 func get_map_pos() -> Vector2:
-	return (Vector2(-position.x, -position.z) + map_offset) * map_scale
+	return (Vector2(-position.x, -position.z) + map_world_offset) * map_world_scale
 
 
 func _activate_map() -> void:
