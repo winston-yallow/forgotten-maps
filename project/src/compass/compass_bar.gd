@@ -1,8 +1,8 @@
 class_name CompassBar
-extends Control
+extends ColorRect
 
 
-@onready var shader: ShaderMaterial = %Degrees.material
+@onready var shader: ShaderMaterial = material
 
 
 var heading: float = 0.0:
