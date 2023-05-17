@@ -39,6 +39,13 @@ func is_active() -> bool:
 	return visible
 
 
+func add_marker(canvas_pos: Vector2, map_pos: Vector2) -> void:
+	var marker := MapMarker.new(canvas_pos, map_pos)
+	placed_markers.append(marker)
+	if placed_markers.size() >= 3:
+		builder = MeshBuilder.new(placed_markers, texture.get_size() * size_factor)
+
+
 func _ready() -> void:
 	marker_add.pressed.connect(_start_marker_mode)
 	marker_abort.pressed.connect(_end_marker_mode)
@@ -66,15 +73,8 @@ func _end_marker_mode() -> void:
 
 
 func _confirm_marker() -> void:
-	_add_marker(proposed_marker)
+	add_marker(proposed_marker, player.get_map_pos())
 	_end_marker_mode()
-
-
-func _add_marker(canvas_pos: Vector2) -> void:
-	var marker := MapMarker.new(canvas_pos, player.get_map_pos())
-	placed_markers.append(marker)
-	if placed_markers.size() >= 3:
-		builder = MeshBuilder.new(placed_markers, texture.get_size() * size_factor)
 
 
 func _process(_delta: float) -> void:

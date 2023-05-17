@@ -72,6 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, 0.0464362, 234)
 map_texture = ExtResource("6_sgv74")
 map_world_offset = Vector2(667.75, 501.498)
 map_world_scale = 1.073
+map_initial_markers = Array[Vector2]([Vector2(1110, 420), Vector2(1025, 50), Vector2(950, 300)])
 
 [node name="Map Overlay" type="Sprite3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 667.75, 24, -501.498)

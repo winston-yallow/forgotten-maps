@@ -10,6 +10,7 @@ const GRAVITY = 30.0
 @export var map_display_factor := 1.0
 @export var map_world_offset := Vector2.ZERO
 @export var map_world_scale := 1.0
+@export var map_initial_markers: Array[Vector2] = []
 
 @onready var cam: Camera3D = %Camera
 @onready var map: DynamicMap = %DynamicMap
@@ -19,6 +20,8 @@ const GRAVITY = 30.0
 func _ready() -> void:
 	map.texture = map_texture
 	map.size_factor = map_display_factor
+	for pos in map_initial_markers:
+		map.add_marker(pos, pos)
 	_deactivate_map()
 
 
