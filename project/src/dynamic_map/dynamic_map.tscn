@@ -104,6 +104,7 @@ offset_right = 100.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 25
 text = "Extend Map"
 
 [node name="ClickDetector" type="Control" parent="."]
@@ -129,18 +130,21 @@ offset_top = -20.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 15
 alignment = 1
 
 [node name="MarkerConfirm" type="Button" parent="ClickDetector/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Confirm"
 
 [node name="MarkerAbort" type="Button" parent="ClickDetector/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Abort"
 
 [node name="BtnMenu" type="Button" parent="."]
@@ -155,10 +159,12 @@ offset_top = 20.0
 offset_right = -20.0
 offset_bottom = 67.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
 text = "Menu"
 
 [node name="Menu" type="ColorRect" parent="."]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_sknon")
 layout_mode = 1
 anchors_preset = 15
