@@ -32,7 +32,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bmimc")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+unique_name_in_owner = true
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15

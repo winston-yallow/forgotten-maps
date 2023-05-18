@@ -15,6 +15,10 @@ const MASK_TEXTURE := preload("res://src/dynamic_map/mask_texture.tres")
 var proposed_marker := Vector2.INF
 var placed_markers: Array[MapMarker] = []
 
+var map_dragging := false
+var map_drag_offset := Vector2.ZERO
+
+@onready var background: Control = %Background
 @onready var mesh_instance: MeshInstance2D = %MeshInstance
 @onready var rulers: Array[DraggableControl] = [
 	%Ruler1 as DraggableControl,
@@ -33,6 +37,7 @@ func _ready() -> void:
 	btn_marker_abort.pressed.connect(_end_marker_mode)
 	btn_marker_confirm.pressed.connect(_confirm_marker)
 	click_detector.gui_input.connect(_detector_input)
+	background.gui_input.connect(_background_input)
 	
 	(mesh_instance.material as ShaderMaterial).set_shader_parameter(
 		"mask_texture",
@@ -70,6 +75,17 @@ func add_marker(canvas_pos: Vector2, map_pos: Vector2) -> void:
 	_rebuild_mesh()
 
 
+func _background_input(event: InputEvent) -> void:
+	if not map_dragging:
+		if event.is_action_pressed("map_interaction"):
+			map_dragging = true
+			map_drag_offset = mesh_instance.position - event.position
+	elif event.is_action_released("map_interaction"):
+		map_dragging = false
+	elif InputEventMouseMotion:
+		mesh_instance.position = event.position + map_drag_offset
+
+
 func _detector_input(event: InputEvent) -> void:
 	if event.is_action_pressed("map_interaction"):
 		proposed_marker = get_local_mouse_position()
@@ -93,7 +109,7 @@ func _end_marker_mode() -> void:
 
 
 func _confirm_marker() -> void:
-	add_marker(proposed_marker, player.get_map_pos())
+	add_marker(proposed_marker - mesh_instance.position, player.get_map_pos())
 	_end_marker_mode()
 
 
@@ -114,4 +130,4 @@ func _process(_delta: float) -> void:
 func _draw() -> void:
 	# Draw player position
 	if get_tree().debug_navigation_hint:
-		draw_circle(player.get_map_pos(), 10.0, Color.GOLD)
+		draw_circle(player.get_map_pos() + mesh_instance.position, 10.0, Color.GOLD)
