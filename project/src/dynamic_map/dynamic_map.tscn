@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://drxv03gxcm087"]
+[gd_scene load_steps=13 format=3 uid="uid://drxv03gxcm087"]
 
 [ext_resource type="Script" path="res://src/dynamic_map/dynamic_map.gd" id="1_bmimc"]
 [ext_resource type="Theme" uid="uid://dmralllg3omvl" path="res://src/theme/theme.tres" id="1_naqee"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/dynamic_map/draggable_control.gd" id="3_d6bf6"]
 [ext_resource type="Texture2D" uid="uid://tymkrn0pxlbn" path="res://src/dynamic_map/noise_texture.tres" id="3_gs0nm"]
 [ext_resource type="Texture2D" uid="uid://cmhmlefrwhxms" path="res://src/dynamic_map/compass.png" id="4_61sln"]
+[ext_resource type="Shader" path="res://src/theme/blurred_bg.gdshader" id="8_p7hnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nbse7"]
 shader = ExtResource("2_dn0wg")
@@ -23,6 +24,9 @@ height = 20
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sknon"]
+shader = ExtResource("8_p7hnj")
 
 [node name="Dynamic Map" type="Control"]
 layout_mode = 3
@@ -85,7 +89,7 @@ offset_bottom = 150.0
 texture = ExtResource("2_r850h")
 script = ExtResource("3_d6bf6")
 
-[node name="MarkerAdd" type="Button" parent="."]
+[node name="BtnMarkerAdd" type="Button" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
@@ -138,6 +142,77 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Abort"
+
+[node name="BtnMenu" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 67.0
+grow_horizontal = 0
+text = "Menu"
+
+[node name="Menu" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_sknon")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.933333, 0.933333, 0.933333, 1)
+
+[node name="Panel" type="Panel" parent="Menu"]
+custom_minimum_size = Vector2(300, 175)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Panel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BtnMenuContinue" type="Button" parent="Menu/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Continue Game"
+
+[node name="Control" type="Control" parent="Menu/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BtnMenuQuit" type="Button" parent="Menu/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit to Main Menu
+(does not save progress)"
 
 [node name="MaskViewport" type="SubViewport" parent="."]
 unique_name_in_owner = true
