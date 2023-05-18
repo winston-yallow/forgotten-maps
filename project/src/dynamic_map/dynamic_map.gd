@@ -9,6 +9,10 @@ const MASK_TEXTURE := preload("res://src/dynamic_map/mask_texture.tres")
 		texture = value
 		mesh_instance.texture = texture
 		mask_viewport.size = texture.get_size()
+		mesh_instance.position = (
+			(Vector2(get_tree().root.size) - texture.get_size())
+			/ 2.0
+		)
 @export var size_factor: float = 1.0
 @export var player: Player
 
