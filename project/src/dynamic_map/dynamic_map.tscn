@@ -130,7 +130,7 @@ offset_top = -20.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 15
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="MarkerConfirm" type="Button" parent="ClickDetector/HBoxContainer"]

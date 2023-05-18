@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://dmralllg3omvl"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dmralllg3omvl"]
 
 [ext_resource type="FontVariation" uid="uid://2fv8omtrfqxy" path="res://src/theme/font_alegreya/weight_bold.tres" id="1_3vcne"]
 [ext_resource type="Texture2D" uid="uid://b75vxg4nlt1dd" path="res://src/theme/textures/buttonSquare_blue_pressed.png" id="2_w263i"]
@@ -17,6 +17,18 @@ texture_margin_left = 22.0
 texture_margin_top = 22.0
 texture_margin_right = 22.0
 texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4gca"]
+draw_center = false
+border_width_left = 4
+border_width_right = 4
+border_color = Color(0.592157, 0.443137, 0.290196, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 8.0
+expand_margin_right = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cgk8h"]
 content_margin_left = 12.0
@@ -84,6 +96,7 @@ Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/fonts/font = ExtResource("1_3vcne")
 Button/styles/disabled = SubResource("StyleBoxTexture_gp7dw")
+Button/styles/focus = SubResource("StyleBoxFlat_d4gca")
 Button/styles/hover = SubResource("StyleBoxTexture_cgk8h")
 Button/styles/normal = SubResource("StyleBoxTexture_5qgns")
 Button/styles/pressed = SubResource("StyleBoxTexture_ka36u")
