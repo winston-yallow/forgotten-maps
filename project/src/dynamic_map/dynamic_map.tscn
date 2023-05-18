@@ -44,6 +44,7 @@ color = Color(0.443137, 0.411765, 0.329412, 1)
 
 [node name="MeshInstance" type="MeshInstance2D" parent="."]
 unique_name_in_owner = true
+show_behind_parent = true
 material = SubResource("ShaderMaterial_nbse7")
 
 [node name="Compass" type="TextureRect" parent="."]
