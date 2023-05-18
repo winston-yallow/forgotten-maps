@@ -4,7 +4,7 @@ extends Control
 
 const MASK_TEXTURE := preload("res://src/dynamic_map/mask_texture.tres")
 
-@export var texture: Texture:
+@export var texture: Texture2D:
 	set(value):
 		texture = value
 		mesh_instance.texture = texture

@@ -6,7 +6,7 @@ const SPEED = 30.0
 const JUMP_VELOCITY = 15.0
 const GRAVITY = 30.0
 
-@export var map_texture: Texture
+@export var map_texture: Texture2D
 @export var map_display_factor := 1.0
 @export var map_world_offset := Vector2.ZERO
 @export var map_world_scale := 1.0
