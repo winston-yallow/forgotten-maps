@@ -73,7 +73,7 @@ func add_marker(canvas_pos: Vector2, map_pos: Vector2) -> void:
 	placed_markers.append(marker)
 	var mask_sprite := Sprite2D.new()
 	mask_sprite.texture = MASK_TEXTURE
-	mask_sprite.position = canvas_pos
+	mask_sprite.position = map_pos
 	mask_viewport.add_child(mask_sprite)
 	mask_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	_rebuild_mesh()
