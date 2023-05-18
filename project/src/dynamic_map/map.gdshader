@@ -5,7 +5,7 @@ const float SMOOTHNESS_FACTOR = 1.0 + SMOOTHNESS;
 const float SMOOTHNESS_HALF = SMOOTHNESS / 2.0;
 
 uniform sampler2D mask_texture : source_color, hint_default_white;
-uniform sampler2D noise_texture : source_color, hint_default_white;
+uniform sampler2D noise_texture : source_color, hint_default_white, repeat_enable;
 
 varying vec2 noise_uv;
 
