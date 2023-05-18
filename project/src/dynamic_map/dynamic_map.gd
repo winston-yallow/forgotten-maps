@@ -20,8 +20,8 @@ var placed_markers: Array[MapMarker] = []
 @onready var marker_add: Button = %MarkerAdd
 @onready var click_detector: Control = %ClickDetector
 @onready var marker_preview: Sprite2D = %MarkerPreview
-@onready var marker_confirm: Button = %MarkerConfirm
-@onready var marker_abort: Button = %MarkerAbort
+@onready var btn_marker_confirm: Button = %MarkerConfirm
+@onready var btn_marker_abort: Button = %MarkerAbort
 
 
 func activate() -> void:
@@ -51,22 +51,22 @@ func add_marker(canvas_pos: Vector2, map_pos: Vector2) -> void:
 
 func _ready() -> void:
 	marker_add.pressed.connect(_start_marker_mode)
-	marker_abort.pressed.connect(_end_marker_mode)
-	marker_confirm.pressed.connect(_confirm_marker)
+	btn_marker_abort.pressed.connect(_end_marker_mode)
+	btn_marker_confirm.pressed.connect(_confirm_marker)
 	click_detector.gui_input.connect(_detector_input)
 
 
 func _detector_input(event: InputEvent) -> void:
 	if event.is_action_pressed("map_interaction"):
 		proposed_marker = get_local_mouse_position()
-		marker_confirm.disabled = false
+		btn_marker_confirm.disabled = false
 		marker_preview.visible = true
 		marker_preview.position = proposed_marker
 
 
 func _start_marker_mode() -> void:
 	proposed_marker = Vector2.INF
-	marker_confirm.disabled = true
+	btn_marker_confirm.disabled = true
 	click_detector.visible = true
 	marker_add.visible = false
 	marker_preview.visible = false
