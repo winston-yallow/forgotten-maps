@@ -10,7 +10,7 @@ uniform sampler2D noise_texture : source_color, hint_default_white;
 void fragment() {
 	COLOR = texture(TEXTURE, UV);
 	float mask = texture(mask_texture, UV).x;
-	float noise = texture(noise_texture, UV).x;
+	float noise = texture(noise_texture, SCREEN_UV).x;
 	float alpha = smoothstep(
 		noise - SMOOTHNESS_HALF,
 		noise + SMOOTHNESS_HALF,
