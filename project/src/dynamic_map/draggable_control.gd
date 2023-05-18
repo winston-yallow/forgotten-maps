@@ -33,7 +33,7 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func _handle_waiting(event: InputEvent) -> void:
-	if event.is_action_pressed("map_interaction"):
+	if event.is_action_pressed("map_interact_primary"):
 		dragging = true
 		rotating = false
 		drag_object_start = position
@@ -42,7 +42,7 @@ func _handle_waiting(event: InputEvent) -> void:
 
 
 func _handle_dragging(event: InputEvent) -> void:
-	if event.is_action_released("map_interaction"):
+	if event.is_action_released("map_interact_primary"):
 		dragging = false
 		get_tree().root.set_input_as_handled()
 	

@@ -81,17 +81,17 @@ func add_marker(canvas_pos: Vector2, map_pos: Vector2) -> void:
 
 func _background_input(event: InputEvent) -> void:
 	if not map_dragging:
-		if event.is_action_pressed("map_interaction"):
+		if event.is_action_pressed("map_interact_primary"):
 			map_dragging = true
 			map_drag_offset = mesh_instance.position - event.position
-	elif event.is_action_released("map_interaction"):
+	elif event.is_action_released("map_interact_primary"):
 		map_dragging = false
 	elif InputEventMouseMotion:
 		mesh_instance.position = event.position + map_drag_offset
 
 
 func _detector_input(event: InputEvent) -> void:
-	if event.is_action_pressed("map_interaction"):
+	if event.is_action_pressed("map_interact_primary"):
 		proposed_marker = get_local_mouse_position()
 		btn_marker_confirm.disabled = false
 		marker_preview.visible = true
