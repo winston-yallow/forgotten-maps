@@ -2,7 +2,11 @@ class_name MeshBuilder
 extends RefCounted
 
 
-static func from_markers(markers: Array[MapMarker], img_size: Vector2) -> ArrayMesh:
+static func from_markers(
+	markers: Array[MapMarker],
+	img_size: Vector2,
+	extend: float
+) -> ArrayMesh:
 	# Generate list of raw points and offsets
 	var points := PackedVector2Array()
 	var offsets := PackedVector2Array()
@@ -14,7 +18,7 @@ static func from_markers(markers: Array[MapMarker], img_size: Vector2) -> ArrayM
 	# (copies closest vertices offset to the new vertices)
 	var hull := Geometry2D.convex_hull(points).slice(0, -1)
 	# TODO: Handle invalid hulls (all points at same location)
-	var extended_hull := Geometry2D.offset_polygon(hull, 100.0)[0]
+	var extended_hull := Geometry2D.offset_polygon(hull, extend)[0]
 	for vertex in extended_hull:
 		var closest_offset := Vector2.INF
 		var closest_dist := INF

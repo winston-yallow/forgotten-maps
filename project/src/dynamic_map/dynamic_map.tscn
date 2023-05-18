@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://drxv03gxcm087"]
+[gd_scene load_steps=10 format=3 uid="uid://drxv03gxcm087"]
 
 [ext_resource type="Script" path="res://src/dynamic_map/dynamic_map.gd" id="1_bmimc"]
+[ext_resource type="Shader" path="res://src/dynamic_map/map.gdshader" id="2_dn0wg"]
 [ext_resource type="Texture2D" uid="uid://gxfrsmjcei2a" path="res://src/dynamic_map/ruler.png" id="2_r850h"]
 [ext_resource type="Script" path="res://src/dynamic_map/draggable_control.gd" id="3_d6bf6"]
+[ext_resource type="Texture2D" uid="uid://tymkrn0pxlbn" path="res://src/dynamic_map/noise_texture.tres" id="3_gs0nm"]
 [ext_resource type="Texture2D" uid="uid://cmhmlefrwhxms" path="res://src/dynamic_map/compass.png" id="4_61sln"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbse7"]
+shader = ExtResource("2_dn0wg")
+shader_parameter/noise_texture = ExtResource("3_gs0nm")
 
 [sub_resource type="Gradient" id="Gradient_gyq7g"]
 offsets = PackedFloat32Array(0.774194, 0.922581)
@@ -38,6 +44,7 @@ color = Color(0.443137, 0.411765, 0.329412, 1)
 
 [node name="MeshInstance" type="MeshInstance2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_nbse7")
 
 [node name="Compass" type="TextureRect" parent="."]
 layout_mode = 1
@@ -127,3 +134,15 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Abort"
+
+[node name="MaskViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+render_target_update_mode = 0
+
+[node name="Workaround for BG" type="ColorRect" parent="MaskViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

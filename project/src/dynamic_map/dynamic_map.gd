@@ -2,10 +2,13 @@ class_name DynamicMap
 extends Control
 
 
+const MASK_TEXTURE := preload("res://src/dynamic_map/mask_texture.tres")
+
 @export var texture: Texture:
 	set(value):
 		texture = value
 		mesh_instance.texture = texture
+		mask_viewport.size = texture.get_size()
 @export var size_factor: float = 1.0
 @export var player: Player
 
@@ -22,6 +25,19 @@ var placed_markers: Array[MapMarker] = []
 @onready var marker_preview: Sprite2D = %MarkerPreview
 @onready var btn_marker_confirm: Button = %MarkerConfirm
 @onready var btn_marker_abort: Button = %MarkerAbort
+@onready var mask_viewport: SubViewport = %MaskViewport
+
+
+func _ready() -> void:
+	marker_add.pressed.connect(_start_marker_mode)
+	btn_marker_abort.pressed.connect(_end_marker_mode)
+	btn_marker_confirm.pressed.connect(_confirm_marker)
+	click_detector.gui_input.connect(_detector_input)
+	
+	(mesh_instance.material as ShaderMaterial).set_shader_parameter(
+		"mask_texture",
+		mask_viewport.get_texture()
+	)
 
 
 func activate() -> void:
@@ -46,14 +62,12 @@ func is_active() -> bool:
 func add_marker(canvas_pos: Vector2, map_pos: Vector2) -> void:
 	var marker := MapMarker.new(canvas_pos, map_pos)
 	placed_markers.append(marker)
+	var mask_sprite := Sprite2D.new()
+	mask_sprite.texture = MASK_TEXTURE
+	mask_sprite.position = canvas_pos
+	mask_viewport.add_child(mask_sprite)
+	mask_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	_rebuild_mesh()
-
-
-func _ready() -> void:
-	marker_add.pressed.connect(_start_marker_mode)
-	btn_marker_abort.pressed.connect(_end_marker_mode)
-	btn_marker_confirm.pressed.connect(_confirm_marker)
-	click_detector.gui_input.connect(_detector_input)
 
 
 func _detector_input(event: InputEvent) -> void:
@@ -88,7 +102,8 @@ func _rebuild_mesh() -> void:
 		return
 	mesh_instance.mesh = MeshBuilder.from_markers(
 		placed_markers,
-		texture.get_size() * size_factor
+		texture.get_size() * size_factor,
+		MASK_TEXTURE.get_size().x
 	)
 
 
