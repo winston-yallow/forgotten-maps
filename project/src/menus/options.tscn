@@ -1,10 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://hjr53xxuvysw"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_85opy"]
-font_size = 32
-
-[sub_resource type="LabelSettings" id="LabelSettings_7opp8"]
-font_size = 25
+[gd_scene format=3 uid="uid://hjr53xxuvysw"]
 
 [node name="Options" type="VBoxContainer"]
 anchors_preset = 15
@@ -16,8 +10,8 @@ theme_override_constants/separation = 10
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Options"
-label_settings = SubResource("LabelSettings_85opy")
 
 [node name="Description" type="Label" parent="."]
 layout_mode = 2
@@ -28,5 +22,5 @@ layout_mode = 2
 
 [node name="Controls" type="Label" parent="."]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Controls"
-label_settings = SubResource("LabelSettings_7opp8")

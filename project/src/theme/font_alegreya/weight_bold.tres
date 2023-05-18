@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://2fv8omtrfqxy"]
+
+[ext_resource type="FontFile" uid="uid://dvho0okile5og" path="res://src/theme/font_alegreya/alegreya_variable.ttf" id="1_gjai7"]
+
+[resource]
+base_font = ExtResource("1_gjai7")
+variation_opentype = {
+2003265652: 800
+}

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://drxv03gxcm087"]
+[gd_scene load_steps=11 format=3 uid="uid://drxv03gxcm087"]
 
 [ext_resource type="Script" path="res://src/dynamic_map/dynamic_map.gd" id="1_bmimc"]
+[ext_resource type="Theme" uid="uid://dmralllg3omvl" path="res://src/theme/theme.tres" id="1_naqee"]
 [ext_resource type="Shader" path="res://src/dynamic_map/map.gdshader" id="2_dn0wg"]
 [ext_resource type="Texture2D" uid="uid://gxfrsmjcei2a" path="res://src/dynamic_map/ruler.png" id="2_r850h"]
 [ext_resource type="Script" path="res://src/dynamic_map/draggable_control.gd" id="3_d6bf6"]
@@ -30,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_naqee")
 script = ExtResource("1_bmimc")
 
 [node name="Background" type="ColorRect" parent="."]
