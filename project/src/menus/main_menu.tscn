@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpvuycoxvpwi5"]
+
+[ext_resource type="Script" path="res://src/menus/main_menu.gd" id="1_l5ca0"]
+[ext_resource type="PackedScene" uid="uid://hjr53xxuvysw" path="res://src/menus/options.tscn" id="2_d7i7d"]
+[ext_resource type="PackedScene" uid="uid://dpk7s17rx3sn7" path="res://src/menus/credits.tscn" id="3_b32aw"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l5ca0")
+
+[node name="LeftArea" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 300.0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftArea"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="BtnStart" type="Button" parent="LeftArea/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../BtnOptions")
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[node name="BtnOptions" type="Button" parent="LeftArea/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../BtnStart")
+focus_neighbor_bottom = NodePath("../BtnCredits")
+text = "Options"
+
+[node name="BtnCredits" type="Button" parent="LeftArea/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../BtnOptions")
+focus_neighbor_bottom = NodePath("../BtnQuit")
+text = "Credits"
+
+[node name="HSeparator2" type="HSeparator" parent="LeftArea/VBoxContainer"]
+layout_mode = 2
+
+[node name="BtnQuit" type="Button" parent="LeftArea/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../BtnCredits")
+text = "Quit"
+
+[node name="RightArea" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Details" type="Panel" parent="RightArea"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RightArea/Details"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Options" parent="RightArea/Details/MarginContainer" instance=ExtResource("2_d7i7d")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Credits" parent="RightArea/Details/MarginContainer" instance=ExtResource("3_b32aw")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2

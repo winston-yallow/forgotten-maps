@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpk7s17rx3sn7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_85opy"]
+font_size = 32
+
+[node name="Credits" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_85opy")
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
