@@ -1,8 +1,8 @@
 extends VBoxContainer
 
 
-const TITLE_SIZE := 25
-const NAME_SIZE := 16
+const TITLE_SIZE := 28
+const NAME_SIZE := 20
 const TEXT_SIZE := 12
 
 
@@ -38,7 +38,6 @@ func _ready() -> void:
 	)
 	
 	for section in sections:
-		engine_licenses.newline()
 		engine_licenses.push_font_size(TITLE_SIZE)
 		engine_licenses.add_text(section.name)
 		engine_licenses.pop()
@@ -54,6 +53,7 @@ func _ready() -> void:
 			engine_licenses.add_text(license.text)
 			engine_licenses.pop()
 			engine_licenses.newline()
+		engine_licenses.newline()
 
 
 func get_copyright_notices() -> Array[License]:

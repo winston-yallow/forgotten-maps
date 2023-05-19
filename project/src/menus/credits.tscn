@@ -29,9 +29,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-text = "[font_size=32]Game Code[/font_size]
+text = "[font_size=28]Game Code[/font_size]
 
-[font_size=25]MIT License[/font_size]
+[font_size=20]MIT License[/font_size]
 
 Copyright (c) 2023 Winston Yallow
 
@@ -54,14 +54,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[font_size=32]Assets[/font_size]
+[font_size=28]Assets[/font_size]
 
-[font_size=25]Kenney - Survival Kit (all 3D Models)[/font_size]
+[font_size=20]Kenney - Survival Kit (all 3D Models)[/font_size]
 
 CC0 1.0 Universal (CC0 1.0)
 Public Domain Dedication
 
-[font_size=25]Alegreya (Font)[/font_size]
+[font_size=20]Alegreya (Font)[/font_size]
 
 Copyright 2011 The Alegreya Project Authors ([url]https://github.com/huertatipografica/Alegreya[/url])
 
