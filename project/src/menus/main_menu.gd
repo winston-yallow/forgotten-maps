@@ -4,11 +4,13 @@ extends Control
 const GAME_SCENE := preload("res://src/world/world.tscn")
 
 @onready var btn_start: Button = %BtnStart
+@onready var btn_help: Button = %BtnHelp
 @onready var btn_options: Button = %BtnOptions
 @onready var btn_credits: Button = %BtnCredits
 @onready var btn_quit: Button = %BtnQuit
 
 @onready var details: Panel = %Details
+@onready var help: VBoxContainer = %Help
 @onready var options: VBoxContainer = %Options
 @onready var credits: VBoxContainer = %Credits
 
@@ -16,6 +18,7 @@ const GAME_SCENE := preload("res://src/world/world.tscn")
 func _ready() -> void:
 	btn_start.grab_focus()
 	btn_start.pressed.connect(_load_scene.bind(GAME_SCENE))
+	btn_help.pressed.connect(_click_details_button.bind(help))
 	btn_options.pressed.connect(_click_details_button.bind(options))
 	btn_credits.pressed.connect(_click_details_button.bind(credits))
 	btn_quit.pressed.connect(get_tree().quit)
@@ -31,5 +34,6 @@ func _click_details_button(details_menu: Control) -> void:
 		details_menu.visible = false
 	else:
 		details.visible = true
+		help.visible = details_menu == help
 		options.visible = details_menu == options
 		credits.visible = details_menu == credits

@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://ddshri7unftjj"]
+
+[node name="Help" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Help"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="How to Play" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "How to Play"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "You are a cartographer tasked to restore the lost maps of an island. As tools you only have your compass, two rulers and some paper to draw the map on.
+
+In the map view you can draw the area surrounding you. To do that, you need to know where you are first so that you draw your surroundings at the correct location.
+
+The best way to find out where you are is to look at a landmark to see the compass direction it is at. Then place a ruler on the map with the same direction (you know that you are somewhere on that line). Now do this process for a second landmark. You should now have two rulers on your map, each aligned with the real world direction to the landmark. These two lines should intersect somewhere: That is your current location.
+
+You can now click the \"Extend Map\" button in the bottom. Then click on the map where you are (the intersection). Confirming the placed marker will update the map by automatically drawing your surrounding area around your placed marker."
+autowrap_mode = 3
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Controls" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Controls"
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "[FIRST PERSON VIEW]
+WASD: Movement
+Mouse Motion: Camera
+E: Switch to map view
+
+[MAP VIEW]
+Mouse Drag (left click): Move map or rulers around
+Mouse Drag (right click): Rotate rulers
+E: Switch to first person view"
+autowrap_mode = 3
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Planned" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Planned Features"
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Currently the rulers are a bit of a hassle to align with the compass. I plan to integrate a compass and a small degree-display into the ruler itself.
+
+The whole 3D world is a bit empty and I'm in the process of modelling a whole new world. This will be accompanied by a hand drawn map instead of a simple screenshot.
+
+I also want to add a small introduction scene that explains your task.
+
+Currently the game has no end condition. In the end I want to display a win screen once the map is complete. This will also show how accurate the created map is.
+
+The player controller is currently not very smooth and collisions are buggy. This will be completely rewritten."
+autowrap_mode = 3

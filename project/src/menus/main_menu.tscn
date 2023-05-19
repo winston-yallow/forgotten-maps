@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpvuycoxvpwi5"]
+[gd_scene load_steps=7 format=3 uid="uid://dpvuycoxvpwi5"]
 
 [ext_resource type="Theme" uid="uid://dmralllg3omvl" path="res://src/theme/theme.tres" id="1_jyqov"]
 [ext_resource type="Script" path="res://src/menus/main_menu.gd" id="1_l5ca0"]
 [ext_resource type="PackedScene" uid="uid://hjr53xxuvysw" path="res://src/menus/options.tscn" id="2_d7i7d"]
 [ext_resource type="PackedScene" uid="uid://dpk7s17rx3sn7" path="res://src/menus/credits.tscn" id="3_b32aw"]
+[ext_resource type="PackedScene" uid="uid://ddshri7unftjj" path="res://src/menus/help.tscn" id="5_xr6sw"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_lgyk3"]
 color = Color(0.596078, 0.443137, 0.294118, 1)
@@ -42,6 +43,13 @@ layout_mode = 2
 focus_neighbor_bottom = NodePath("../BtnOptions")
 theme_override_font_sizes/font_size = 32
 text = "Start"
+
+[node name="BtnHelp" type="Button" parent="LeftArea/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../BtnStart")
+focus_neighbor_bottom = NodePath("../BtnCredits")
+text = "Help"
 
 [node name="BtnOptions" type="Button" parent="LeftArea/VBoxContainer"]
 unique_name_in_owner = true
@@ -97,6 +105,11 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
+
+[node name="Help" parent="RightArea/Details/MarginContainer" instance=ExtResource("5_xr6sw")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
 [node name="Options" parent="RightArea/Details/MarginContainer" instance=ExtResource("2_d7i7d")]
 unique_name_in_owner = true
