@@ -54,6 +54,24 @@ unique_name_in_owner = true
 show_behind_parent = true
 material = SubResource("ShaderMaterial_nbse7")
 
+[node name="Ruler1" type="TextureRect" parent="MeshInstance"]
+unique_name_in_owner = true
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 720.0
+offset_bottom = 75.0
+texture = ExtResource("2_r850h")
+script = ExtResource("3_d6bf6")
+
+[node name="Ruler2" type="TextureRect" parent="MeshInstance"]
+unique_name_in_owner = true
+offset_left = 20.0
+offset_top = 95.0
+offset_right = 720.0
+offset_bottom = 150.0
+texture = ExtResource("2_r850h")
+script = ExtResource("3_d6bf6")
+
 [node name="Compass" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -68,26 +86,6 @@ offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("4_61sln")
-
-[node name="Ruler1" type="TextureRect" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 720.0
-offset_bottom = 75.0
-texture = ExtResource("2_r850h")
-script = ExtResource("3_d6bf6")
-
-[node name="Ruler2" type="TextureRect" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 20.0
-offset_top = 95.0
-offset_right = 720.0
-offset_bottom = 150.0
-texture = ExtResource("2_r850h")
-script = ExtResource("3_d6bf6")
 
 [node name="BtnMarkerAdd" type="Button" parent="."]
 unique_name_in_owner = true
