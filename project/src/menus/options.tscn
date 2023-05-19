@@ -24,3 +24,18 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Controls"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "In the final game you will be able to change the controls here.
+For now, these are the hardcoded controls.
+
+[FIRST PERSON VIEW]
+WASD: Movement
+Mouse Motion: Camera
+E: Switch to map view
+
+[MAP VIEW]
+Mouse Drag (left click): Move map or rulers around
+Mouse Drag (right click): Rotate rulers
+E: Switch to first person view"
