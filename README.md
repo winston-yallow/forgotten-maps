@@ -3,7 +3,15 @@
 Small game made for the Godot Wild Jam \#57. The player has to restore a map by placing location markers on a blank paper.
 
 
+## Cloning/Downloading
+
+This repository does not include the [Scatter](https://github.com/HungryProton/scatter/) addon. You will need to download
+it separately and place it in the addons folder *before* opening the project.
+If you use git then you will need git LFS to get all assets.
+
+
 ## Development
+
 
 ### Repo Structure
 The `project` directory contains the Godot project. It only uses GDScript, so you don't need the Godot mono version.
