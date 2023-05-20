@@ -1,0 +1,42 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://5viqc4cjinej"
+path="res://.godot/imported/resourceWood.glb-9915860c731ca8fd22f03ee5eda62fb9.scn"
+
+[deps]
+
+source_file="res://src/world/assets/resourceWood.glb"
+dest_files=["res://.godot/imported/resourceWood.glb-9915860c731ca8fd22f03ee5eda62fb9.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=8.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"nodes": {
+"PATH:resourceWood2": {
+"physics/shape_type": 2,
+"primitive/height": 0.1,
+"primitive/position": Vector3(0, 0.02, 0),
+"primitive/radius": 0.02,
+"primitive/rotation": Vector3(90, 135, 0)
+}
+}
+}
+gltf/embedded_image_handling=1

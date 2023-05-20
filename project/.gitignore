@@ -1,2 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
+
+# Don't upload the scatter addon
+addons/proton_scatter/
