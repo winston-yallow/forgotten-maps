@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 
 const SPEED = 15.0
-const JUMP_VELOCITY = 15.0
+const JUMP_VELOCITY = 10.0
 const GRAVITY = 30.0
 
 @export var map_texture: Texture2D
