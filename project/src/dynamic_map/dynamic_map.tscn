@@ -45,7 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.443137, 0.411765, 0.329412, 1)
+color = Color(0.639216, 0.560784, 0.423529, 1)
 
 [node name="MeshInstance" type="MeshInstance2D" parent="."]
 unique_name_in_owner = true
