@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://blyprixp7nqua"]
+
+[ext_resource type="Texture2D" uid="uid://cccttajdcxcyb" path="res://src/dynamic_map/ruler_base.png" id="1_7o2ob"]
+[ext_resource type="Script" path="res://src/dynamic_map/ruler.gd" id="2_fhb56"]
+[ext_resource type="Texture2D" uid="uid://i44wp6ynjlw0" path="res://src/dynamic_map/ruler_overlay.png" id="2_sgn6n"]
+[ext_resource type="FontVariation" uid="uid://2fv8omtrfqxy" path="res://src/theme/font_alegreya/weight_bold.tres" id="3_wf4wc"]
+[ext_resource type="Texture2D" uid="uid://dx3y462bombwd" path="res://src/dynamic_map/ruler_pivot.png" id="3_yikau"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ae716"]
+font = ExtResource("3_wf4wc")
+font_size = 25
+
+[node name="Ruler" type="TextureRect"]
+offset_right = 800.0
+offset_bottom = 80.0
+texture = ExtResource("1_7o2ob")
+stretch_mode = 2
+script = ExtResource("2_fhb56")
+
+[node name="Overlay" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 70.0
+offset_bottom = 70.0
+pivot_offset = Vector2(30, 30)
+texture = ExtResource("2_sgn6n")
+stretch_mode = 2
+
+[node name="DegreeLabel" type="Label" parent="Overlay"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "360°"
+label_settings = SubResource("LabelSettings_ae716")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pivot" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = -10.0
+offset_top = 70.0
+offset_right = 10.0
+offset_bottom = 90.0
+texture = ExtResource("3_yikau")
+stretch_mode = 2

@@ -1,4 +1,4 @@
-class_name DraggableControl
+class_name Ruler
 extends Control
 
 
@@ -12,8 +12,12 @@ var drag_mouse_start := Vector2.ZERO
 
 var rotation_anchor := Vector2(0, size.y)
 
+@onready var overlay: TextureRect = %Overlay
+@onready var degree_label: Label = %DegreeLabel
+
 
 func activate() -> void:
+	overlay.visible = false
 	active = true
 
 
@@ -56,12 +60,16 @@ func _handle_dragging(event: InputEvent) -> void:
 func _handle_rotating(event: InputEvent) -> void:
 	if event.is_action_released("map_interact_secondary"):
 		current_state = STATE.NONE
+		overlay.visible = false
 		get_tree().root.set_input_as_handled()
 	
 	elif event is InputEventMouseMotion:
 		var before := get_global_transform() * rotation_anchor
 		var dir := before.direction_to(event.global_position)
 		rotation = dir.angle()
+		overlay.visible = true
+		overlay.rotation = -rotation
+		degree_label.text = "%d°" % round(rad_to_deg(rotation) + 90)
 		var after := get_global_transform() * rotation_anchor
 		position -= after - before
 		get_tree().root.set_input_as_handled()

@@ -26,9 +26,9 @@ var map_drag_offset := Vector2.ZERO
 @onready var background: Control = %Background
 @onready var mesh_instance: MeshInstance2D = %MeshInstance
 
-@onready var rulers: Array[DraggableControl] = [
-	%Ruler1 as DraggableControl,
-	%Ruler2 as DraggableControl,
+@onready var rulers: Array[Ruler] = [
+	%Ruler1 as Ruler,
+	%Ruler2 as Ruler,
 ]
 
 @onready var btn_marker_add: Button = %BtnMarkerAdd
