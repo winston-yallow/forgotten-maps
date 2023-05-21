@@ -69,7 +69,7 @@ func _handle_rotating(event: InputEvent) -> void:
 		rotation = dir.angle()
 		overlay.visible = true
 		overlay.rotation = -rotation
-		degree_label.text = "%d°" % round(rad_to_deg(rotation) + 90)
+		degree_label.text = "%d°" % round(fposmod(rad_to_deg(rotation) + 270, 360))
 		var after := get_global_transform() * rotation_anchor
 		position -= after - before
 		get_tree().root.set_input_as_handled()
