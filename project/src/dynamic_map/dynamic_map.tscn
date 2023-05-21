@@ -54,21 +54,21 @@ material = SubResource("ShaderMaterial_nbse7")
 
 [node name="Ruler1" parent="MeshInstance" instance=ExtResource("5_innox")]
 unique_name_in_owner = true
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 820.0
-offset_bottom = 100.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 840.0
+offset_bottom = 120.0
 
 [node name="Ruler2" parent="MeshInstance" instance=ExtResource("5_innox")]
 unique_name_in_owner = true
-offset_left = 20.0
-offset_top = 121.0
-offset_right = 820.0
-offset_bottom = 201.0
+offset_left = 40.0
+offset_top = 160.0
+offset_right = 840.0
+offset_bottom = 240.0
 
 [node name="BtnMarkerAdd" type="Button" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -81,8 +81,8 @@ offset_right = 100.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 25
-text = "Extend Map"
+theme_override_font_sizes/font_size = 45
+text = "Extend  Map"
 
 [node name="ClickDetector" type="Control" parent="."]
 unique_name_in_owner = true
