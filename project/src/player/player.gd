@@ -2,9 +2,11 @@ class_name Player
 extends CharacterBody3D
 
 
-const SPEED = 40.0
+const SPEED = 15.0
 const JUMP_VELOCITY = 10.0
 const GRAVITY = 30.0
+
+var loaded := false
 
 var probe_queue: Array[Vector3]
 
@@ -49,6 +51,9 @@ func _deactivate_map() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if not loaded:
+		return
+	
 	if map.is_active():
 		if event.is_action_pressed("toggle_map"):
 			_deactivate_map()
@@ -63,6 +68,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not loaded:
+		return
+	
 	while not probe_queue.is_empty():
 		var probe: Vector3 = probe_queue.pop_back()
 		var state := get_world_3d().direct_space_state

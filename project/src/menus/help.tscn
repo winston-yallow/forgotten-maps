@@ -61,24 +61,3 @@ Mouse Drag (left click): Move map or rulers around
 Mouse Drag (right click): Rotate rulers
 E: Switch to first person view"
 autowrap_mode = 3
-
-[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Planned" type="Label" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Planned Features"
-
-[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Currently the rulers are a bit of a hassle to align with the compass. I plan to integrate a compass and a small degree-display into the ruler itself.
-
-The whole 3D world is a bit empty and I'm in the process of modelling a whole new world. This will be accompanied by a hand drawn map instead of a simple screenshot.
-
-I also want to add a small introduction scene that explains your task.
-
-Currently the game has no end condition. In the end I want to display a win screen once the map is complete. This will also show how accurate the created map is.
-
-The player controller is currently not very smooth and collisions are buggy. This will be completely rewritten."
-autowrap_mode = 3
