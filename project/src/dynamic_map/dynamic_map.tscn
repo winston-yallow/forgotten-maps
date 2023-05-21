@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://drxv03gxcm087"]
+[gd_scene load_steps=12 format=3 uid="uid://drxv03gxcm087"]
 
 [ext_resource type="Script" path="res://src/dynamic_map/dynamic_map.gd" id="1_bmimc"]
 [ext_resource type="Theme" uid="uid://dmralllg3omvl" path="res://src/theme/theme.tres" id="1_naqee"]
@@ -22,6 +22,11 @@ height = 20
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8cc54"]
+font_size = 25
+outline_size = 4
+outline_color = Color(0.427451, 0.329412, 0.227451, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sknon"]
 shader = ExtResource("8_p7hnj")
@@ -123,6 +128,24 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Abort"
+
+[node name="Explanation" type="Label" parent="ClickDetector"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -249.0
+offset_top = -140.0
+offset_right = 249.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Place a marker at the position where you currently are.
+The area around you will be drawn at that position once you press \"Confirm\""
+label_settings = SubResource("LabelSettings_8cc54")
+horizontal_alignment = 1
 
 [node name="BtnBack" type="Button" parent="."]
 unique_name_in_owner = true
