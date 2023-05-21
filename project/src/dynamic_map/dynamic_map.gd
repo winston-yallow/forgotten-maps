@@ -6,6 +6,7 @@ const MAIN_MENU_SCENE := "res://src/menus/main_menu.tscn"
 const MASK_TEXTURE := preload("res://src/dynamic_map/mask_texture.tres")
 
 signal back_requested
+signal marker_placed
 
 @export var texture: Texture2D:
 	set(value):
@@ -92,6 +93,7 @@ func is_active() -> bool:
 
 
 func add_marker(canvas_pos: Vector2, map_pos: Vector2) -> void:
+	marker_placed.emit()
 	var marker := MapMarker.new(canvas_pos, map_pos)
 	placed_markers.append(marker)
 	var mask_sprite := Sprite2D.new()
@@ -100,6 +102,12 @@ func add_marker(canvas_pos: Vector2, map_pos: Vector2) -> void:
 	mask_viewport.add_child(mask_sprite)
 	mask_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	_rebuild_mesh()
+
+
+func store_data() -> void:
+	Data.texture = texture
+	Data.mesh = mesh_instance.mesh
+	Data.markers = placed_markers
 
 
 func _background_input(event: InputEvent) -> void:

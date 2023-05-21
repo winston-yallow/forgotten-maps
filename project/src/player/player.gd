@@ -6,6 +6,8 @@ const SPEED = 40.0
 const JUMP_VELOCITY = 10.0
 const GRAVITY = 30.0
 
+var probe_queue: Array[Vector3]
+
 @export var map_texture: Texture2D
 @export var map_display_factor := 1.0
 @export var map_world_offset := Vector2.ZERO
@@ -25,6 +27,9 @@ func _ready() -> void:
 	map.back_requested.connect(func():
 		if map.is_active():
 			_deactivate_map()
+	)
+	map.marker_placed.connect(func():
+		probe_queue.append(global_position)
 	)
 	_deactivate_map()
 
@@ -58,6 +63,24 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	while not probe_queue.is_empty():
+		var probe: Vector3 = probe_queue.pop_back()
+		var state := get_world_3d().direct_space_state
+		var query := PhysicsShapeQueryParameters3D.new()
+		var shape := SphereShape3D.new()
+		shape.radius = 155.0
+		query.shape = shape
+		query.transform.origin = Vector3(probe.x, 150.0, probe.z)
+		query.collide_with_bodies = false
+		query.collide_with_areas = true
+		query.collision_mask = 0b10
+		for info in state.intersect_shape(query):
+			print(info.collider.name)
+			info.collider.queue_free()
+	if get_tree().get_nodes_in_group("probes").size() == 0:
+		map.store_data()
+		get_tree().change_scene_to_packed(preload("res://src/win_screen/win_screen.tscn"))
+	
 	if map.is_active():
 		return
 	
