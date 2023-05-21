@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=3 uid="uid://dcxiwv3b23px7"]
+[gd_scene load_steps=152 format=3 uid="uid://dcxiwv3b23px7"]
 
 [ext_resource type="PackedScene" uid="uid://buiiq3pt2tk7" path="res://src/player/player.tscn" id="1_3dhbf"]
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_h653d"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/offset_position.gd" id="14_dl187"]
 [ext_resource type="PackedScene" uid="uid://d4fcgjgeev5bq" path="res://src/world/assets/lighthouse.glb" id="15_ap6rb"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="15_yer4w"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="16_exic2"]
+[ext_resource type="PackedScene" uid="uid://dijqmpqh22xh" path="res://src/world/assets/firewatch_tower.glb" id="17_33uay"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_t2ljb"]
 
@@ -687,6 +689,10 @@ closed = false
 thickness = 12.0
 curve = SubResource("Curve3D_o4y0r")
 
+[sub_resource type="Resource" id="Resource_bf6tb"]
+script = ExtResource("16_exic2")
+size = Vector3(15.7788, 10, 17.7075)
+
 [sub_resource type="Resource" id="Resource_tdr1d"]
 script = ExtResource("6_4x0hg")
 amount = 150
@@ -1342,6 +1348,12 @@ script = ExtResource("11_0psut")
 negative = true
 shape = SubResource("Resource_1y3aj")
 
+[node name="Firewatch" type="Node3D" parent="Trees/Southern Forest"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 105.894, 0, 39.2201)
+script = ExtResource("11_0psut")
+negative = true
+shape = SubResource("Resource_bf6tb")
+
 [node name="Dead Forest" type="Node3D" parent="Trees" groups=["scatter"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 61.3457, 188)
 script = ExtResource("4_e0nfl")
@@ -1463,3 +1475,12 @@ transform = Transform3D(0.952039, 0, 0.305978, 0, 1, 0, -0.305978, 0, 0.952039, 
 
 [node name="lighthouse3" parent="Landmarks" instance=ExtResource("15_ap6rb")]
 transform = Transform3D(0.991206, 0, -0.132326, 0, 1, 0, 0.132326, 0, 0.991206, -325.681, 6.70414, 92.6029)
+
+[node name="firewatch_tower" parent="Landmarks" instance=ExtResource("17_33uay")]
+transform = Transform3D(0.962047, 0, -0.272885, 0, 1, 0, 0.272885, 0, 0.962047, 50.3753, 54.3934, -224.897)
+
+[node name="firewatch_tower2" parent="Landmarks" instance=ExtResource("17_33uay")]
+transform = Transform3D(0.573919, 0, -0.818912, 0, 1, 0, 0.818912, 0, 0.573919, 4.96778, 36.7409, 94.4765)
+
+[node name="firewatch_tower3" parent="Landmarks" instance=ExtResource("17_33uay")]
+transform = Transform3D(-0.307024, 0, -0.951702, 0, 1, 0, 0.951702, 0, -0.307024, -174.146, 92.7868, -134.206)
