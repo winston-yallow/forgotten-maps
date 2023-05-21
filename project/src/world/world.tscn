@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=3 uid="uid://dcxiwv3b23px7"]
+[gd_scene load_steps=153 format=3 uid="uid://dcxiwv3b23px7"]
 
 [ext_resource type="PackedScene" uid="uid://buiiq3pt2tk7" path="res://src/player/player.tscn" id="1_3dhbf"]
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_h653d"]
@@ -28,6 +28,8 @@ sky_material = SubResource("PhysicalSkyMaterial_t2ljb")
 background_mode = 2
 sky = SubResource("Sky_okdtc")
 tonemap_mode = 3
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_8k2kg"]
 
 [sub_resource type="Resource" id="Resource_7jc5i"]
 script = ExtResource("6_4x0hg")
@@ -1136,6 +1138,11 @@ pixel_size = 1.06
 texture = ExtResource("6_sgv74")
 
 [node name="Island" parent="." instance=ExtResource("3_hqglx")]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_8k2kg")
 
 [node name="Grass" type="Node3D" parent="."]
 
