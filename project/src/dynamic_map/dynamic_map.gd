@@ -5,6 +5,8 @@ extends Control
 const MAIN_MENU_SCENE := "res://src/menus/main_menu.tscn"
 const MASK_TEXTURE := preload("res://src/dynamic_map/mask_texture.tres")
 
+signal back_requested
+
 @export var texture: Texture2D:
 	set(value):
 		texture = value
@@ -39,6 +41,8 @@ var map_drag_offset := Vector2.ZERO
 
 @onready var mask_viewport: SubViewport = %MaskViewport
 
+@onready var btn_back: Button = %BtnBack
+
 @onready var menu: Control = %Menu
 @onready var btn_menu: Button = %BtnMenu
 @onready var btn_menu_continue: Button = %BtnMenuContinue
@@ -46,6 +50,8 @@ var map_drag_offset := Vector2.ZERO
 
 
 func _ready() -> void:
+	btn_back.pressed.connect(func(): back_requested.emit())
+	
 	btn_menu.pressed.connect(func(): menu.visible = true)
 	btn_menu_continue.pressed.connect(func(): menu.visible = false)
 	btn_menu_quit.pressed.connect(func():

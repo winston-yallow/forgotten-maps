@@ -22,6 +22,10 @@ func _ready() -> void:
 	map.size_factor = map_display_factor
 	for pos in map_initial_markers:
 		map.add_marker(pos, pos)
+	map.back_requested.connect(func():
+		if map.is_active():
+			_deactivate_map()
+	)
 	_deactivate_map()
 
 

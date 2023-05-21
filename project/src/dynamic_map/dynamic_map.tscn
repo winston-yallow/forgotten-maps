@@ -35,7 +35,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_naqee")
 script = ExtResource("1_bmimc")
-size_factor = null
 
 [node name="Background" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -124,6 +123,17 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Abort"
+
+[node name="BtnBack" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 120.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 25
+text = "Back"
 
 [node name="BtnMenu" type="Button" parent="."]
 unique_name_in_owner = true
