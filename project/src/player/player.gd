@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody3D
 
 
-const SPEED = 40.0
+const SPEED = 20.0
 const JUMP_VELOCITY = 10.0
 const GRAVITY = 30.0
 
@@ -61,8 +61,8 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("toggle_map"):
 			_activate_map()
 		elif event is InputEventMouseMotion:
-			rotate_y(-event.relative.x * 0.005)
-			var new_cam_rotation: float = cam.rotation.x - event.relative.y * 0.005
+			rotate_y(-event.relative.x * 0.003)
+			var new_cam_rotation: float = cam.rotation.x - event.relative.y * 0.003
 			var max_rotation := deg_to_rad(80)
 			cam.rotation.x = clamp(new_cam_rotation, -max_rotation, max_rotation)
 
